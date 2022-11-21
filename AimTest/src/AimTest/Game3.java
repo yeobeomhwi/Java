@@ -104,12 +104,10 @@ public class Game3 extends JFrame {
     // 윈도우 창 위치를 메뉴바를 끌어서 옮길 수 있도록 마우스 좌표 int
     private int mouseX, mouseY;
 
+    int second = 30;
+
     private TimerBar timerBar;
     private Thread threadBar;
-
-    private TimerNum timerNum;
-    private Thread threadNum;
-    int second;
 
     // 폰트
     Font font = new Font("맑은 고딕", Font.BOLD, 25);
@@ -140,7 +138,7 @@ public class Game3 extends JFrame {
     public Game3() {
         MainFrame(); // 메인 프레임
         Translucentbackground();
-        Container(second); // 컨테이너 설정
+        Container(); // 컨테이너 설정
         Target_Plate(); // 타겟 이미지 설정
         ClickCount(); // 클릭 카운트 설정
         StartText(); // 시작 카운트 설정
@@ -174,16 +172,11 @@ public class Game3 extends JFrame {
         // c.add(bt_start);
         c.add(StartText);
         c.add(endStr);
-
         timerBar = new TimerBar(second);
         threadBar = new Thread(timerBar);
         threadBar.start();
         c.add(timerBar);
 
-        timerNum = new TimerNum(second);
-        threadNum = new Thread(timerNum);
-        threadNum.start();
-        c.add(timerNum);
     }
 
     // 타겟이미지 크기 위치 보이기 설정
