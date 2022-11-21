@@ -185,6 +185,7 @@ public class AimTest1 extends JFrame {
             @Override
             public void mousePressed(MouseEvent e) {
                 new Game2();
+                dispose();
             }
         });
         add(Shots30Button);
