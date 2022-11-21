@@ -84,8 +84,8 @@ public class AimTest1 extends JFrame {
         MenuBar();
     }
 
+    // 메뉴바
     private void MenuBar() {
-        // 메뉴바
         menuBar.setBounds(0, 0, 1920, 50); // setbounds 는 위치와 크기를 정함
         menuBar.addMouseListener(new MouseAdapter() {
             @Override
@@ -107,8 +107,8 @@ public class AimTest1 extends JFrame {
         add(menuBar);
     }
 
+    // Back 버튼
     private void BackButton() {
-        // Back 버튼
         BackButton.setBounds(10, 0, 50, 50);
         BackButton.setBorderPainted(false); // JButton의 외곽선을 지운다.
         BackButton.setContentAreaFilled(false); // JButton의 내용영역 채우기 않함
@@ -136,8 +136,8 @@ public class AimTest1 extends JFrame {
         add(BackButton);
     }
 
+    // Broken 버튼 게임3
     private void BrokenButton() {
-        // Broken 버튼
         BrokenButton.setBounds(653, 757, 700, 200);
         BrokenButton.setBorderPainted(false); // JButton의 외곽선을 지운다.
         BrokenButton.setContentAreaFilled(false); // JButton의 내용영역 채우기 않함
@@ -163,8 +163,8 @@ public class AimTest1 extends JFrame {
         add(BrokenButton);
     }
 
+    // Shots30 버튼 게임 2
     private void Shots30Button() {
-        // Shots30 버튼
         Shots30Button.setBounds(653, 440, 700, 200);
         Shots30Button.setBorderPainted(false); // JButton의 외곽선을 지운다.
         Shots30Button.setContentAreaFilled(false); // JButton의 내용영역 채우기 않함
@@ -190,8 +190,8 @@ public class AimTest1 extends JFrame {
         add(Shots30Button);
     }
 
+    // Seconds30 버튼 타겟 30개를 빠르게 뿌수기 게임 1
     private void Seconds30Button() {
-        // Seconds30 버튼
         Seconds30Button.setBounds(653, 123, 700, 200);
         Seconds30Button.setBorderPainted(false); // JButton의 외곽선을 지운다.
         Seconds30Button.setContentAreaFilled(false); // JButton의 내용영역 채우기 않함
@@ -220,8 +220,8 @@ public class AimTest1 extends JFrame {
         add(Seconds30Button);
     }
 
+    // Quit 버튼
     private void QuitButton() {
-        // Quit 버튼
         QuitButton.setBounds(720, 850, 440, 130);
         QuitButton.setBorderPainted(false); // JButton의 외곽선을 지운다.
         QuitButton.setContentAreaFilled(false); // JButton의 내용영역 채우기 않함
@@ -247,8 +247,8 @@ public class AimTest1 extends JFrame {
         add(QuitButton);
     }
 
+    // Start 버튼
     private void StartButton() {
-        // Start 버튼
         StartButton.setBounds(720, 700, 440, 130);
         StartButton.setBorderPainted(false); // JButton의 외곽선을 지운다.
         StartButton.setContentAreaFilled(false); // JButton의 내용영역 채우기 않함
@@ -275,8 +275,8 @@ public class AimTest1 extends JFrame {
         add(StartButton);
     }
 
+    // Exit 버튼
     private void ExitButton() {
-        // Exit 버튼
         exitButton.setBounds(1870, 0, 50, 50);
         exitButton.setBorderPainted(false); // JButton의 외곽선을 지운다.
         exitButton.setContentAreaFilled(false); // JButton의 내용영역 채우기 않함
