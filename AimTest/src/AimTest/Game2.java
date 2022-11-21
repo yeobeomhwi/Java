@@ -1,19 +1,9 @@
 package AimTest;
 
-import java.awt.Color;
-import java.awt.Font;
-import java.awt.Graphics;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
-import java.awt.event.MouseEvent;
-import java.awt.event.MouseListener;
-import java.awt.event.MouseMotionListener;
-import java.util.Random;
-
-import javax.swing.JButton;
-import javax.swing.JFrame;
-import javax.swing.JLabel;
-import javax.swing.JPanel;
+import java.awt.*;
+import java.awt.event.*;
+import java.util.*;
+import javax.swing.*;
 
 //시간
 class StopWatch extends Thread {
@@ -149,7 +139,7 @@ class MyPanel extends JPanel implements MouseListener, MouseMotionListener, Acti
         topPanel = new JPanel();
         topPanel.setLayout(null);
         topPanel.setBackground(Color.LIGHT_GRAY);
-        topPanel.setSize(1000, 100);
+        topPanel.setSize(1920, 100);
         topPanel.setLocation(0, 0);
         add(topPanel);
     }
@@ -195,8 +185,14 @@ class MyPanel extends JPanel implements MouseListener, MouseMotionListener, Acti
 
     }
 
+    public void screenDraw(Graphics g) {
+        paintComponents(g); // 항상 고정하는 이미지 이지에 paintComponents로 구현
+        this.repaint(); // 다시 페인트 함수를 불러오는것
+    }
+
     protected void paintComponent(Graphics g) {
-        super.paintComponent(g);
+        super.paintComponents(g); // 항상 고정하는 이미지 이지에 paintComponents로 구현
+        this.repaint(); // 다시 페인트 함수를 불러오는것
         try {
             Thread.sleep(10);
             repaint();
@@ -302,9 +298,11 @@ class MyPanel extends JPanel implements MouseListener, MouseMotionListener, Acti
 public class Game2 {
     public static void main(String[] args) {
         JFrame frame = new JFrame();
+        frame.setUndecorated(true); // 기본 메뉴바 안보이게하기
         frame.setTitle("1 to 50 ");
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        frame.setSize(1000, 900);
+        frame.setLayout(null); // 배치관리자 없음
+        frame.setSize(Main.SCREEN_WIDTH, Main.SCREEN_HEIGHT);
         frame.setLocationRelativeTo(null); // 실행했을떄 만튼 창이 컴퓨터 정중앙에 위치한다.
         MyPanel mp = new MyPanel();
         frame.setContentPane(mp);
