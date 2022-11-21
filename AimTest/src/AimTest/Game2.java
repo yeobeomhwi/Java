@@ -139,7 +139,7 @@ class MyPanel extends JPanel implements MouseListener, MouseMotionListener, Acti
         topPanel = new JPanel();
         topPanel.setLayout(null);
         topPanel.setBackground(Color.LIGHT_GRAY);
-        topPanel.setSize(1920, 100);
+        topPanel.setSize(1000, 100);
         topPanel.setLocation(0, 0);
         add(topPanel);
     }
@@ -185,14 +185,8 @@ class MyPanel extends JPanel implements MouseListener, MouseMotionListener, Acti
 
     }
 
-    public void screenDraw(Graphics g) {
-        paintComponents(g); // 항상 고정하는 이미지 이지에 paintComponents로 구현
-        this.repaint(); // 다시 페인트 함수를 불러오는것
-    }
-
     protected void paintComponent(Graphics g) {
-        super.paintComponents(g); // 항상 고정하는 이미지 이지에 paintComponents로 구현
-        this.repaint(); // 다시 페인트 함수를 불러오는것
+        super.paintComponent(g);
         try {
             Thread.sleep(10);
             repaint();
@@ -298,11 +292,10 @@ class MyPanel extends JPanel implements MouseListener, MouseMotionListener, Acti
 public class Game2 {
     public static void main(String[] args) {
         JFrame frame = new JFrame();
-        frame.setUndecorated(true); // 기본 메뉴바 안보이게하기
+
         frame.setTitle("1 to 50 ");
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        frame.setLayout(null); // 배치관리자 없음
-        frame.setSize(Main.SCREEN_WIDTH, Main.SCREEN_HEIGHT);
+        frame.setSize(1000, 900);
         frame.setLocationRelativeTo(null); // 실행했을떄 만튼 창이 컴퓨터 정중앙에 위치한다.
         MyPanel mp = new MyPanel();
         frame.setContentPane(mp);
