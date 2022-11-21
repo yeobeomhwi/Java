@@ -198,7 +198,7 @@ public class Game1 extends JFrame {
             @Override
             public void mousePressed(MouseEvent e) {
                 // 선택창으로 이동
-                new AimTest1().EnterMain();
+                new AimTest().EnterMain();
                 dispose();
             }
         });
