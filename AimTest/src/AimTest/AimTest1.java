@@ -329,12 +329,6 @@ public class AimTest1 extends JFrame {
         BackGround = new ImageIcon(Main.class.getResource("../images/GameBackGround.png")).getImage();
     }
 
-    // game2 (30발의 기회)
-    public void GameStart2() {
-
-        new Game2();
-    }
-
     // (3번 실수 하면 끝 오래버티기)
     public void GameStart3() {
         StartButton.setVisible(false);
