@@ -177,7 +177,7 @@ class MyPanel extends JPanel implements MouseListener, MouseMotionListener, Acti
     }
 
     // 리셋
-    public void reset() {
+    public void reset2() {
         a = 1;
         answerText.setText(a + "");
         timeTextLb.setText("0");
@@ -284,7 +284,7 @@ class MyPanel extends JPanel implements MouseListener, MouseMotionListener, Acti
         if (e.getSource() == reset) {
             setBasic();
             num_shuffle();
-            reset();
+            reset2();
         }
     }
 }
