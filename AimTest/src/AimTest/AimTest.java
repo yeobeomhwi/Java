@@ -11,9 +11,9 @@ public class AimTest extends JFrame {
 
     // ==========================이미지=======================================================
     // 시작화면 배경 이미지
-    private Image BackGround = new ImageIcon(Main.class.getResource("../images/IntroBackGround.jpg")).getImage();
+    private Image BackGround = new ImageIcon(Main.class.getResource("../images/IntroBackGround1.png")).getImage();
     // 상단 메뉴바 이미지
-    private JLabel menuBar = new JLabel(new ImageIcon(Main.class.getResource("../images/menuBar.png")));
+    private JLabel menuBar = new JLabel(new ImageIcon(Main.class.getResource("../images/MenuBar.png")));
     // 상단 메뉴바 종료 버튼 이미지
     private ImageIcon exitButtonEnteredImage = new ImageIcon(Main.class.getResource("../images/exitButtonEntered.png"));
     private ImageIcon exitButtonBasicImage = new ImageIcon(Main.class.getResource("../images/exitButtonBasic.png"));
@@ -30,8 +30,6 @@ public class AimTest extends JFrame {
             Main.class.getResource("../images/Seconds30Entered.png"));
     private ImageIcon Shots30ButtonBasicImage = new ImageIcon(Main.class.getResource("../images/Shots30Basic.png"));
     private ImageIcon Shots30ButtonEnteredImage = new ImageIcon(Main.class.getResource("../images/Shots30Entered.png"));
-    private ImageIcon Oneto50BasicImage = new ImageIcon(Main.class.getResource("../images/Oneto50Basic.png"));
-    private ImageIcon Oneto50EenteredImage = new ImageIcon(Main.class.getResource("../images/Oneto50Eentered.png"));
     // 메인화면 버튼
     private ImageIcon BackButtonBasicImage = new ImageIcon(Main.class.getResource("../images/BackIconBasic.png"));
     private ImageIcon BackButtonEnteredImage = new ImageIcon(Main.class.getResource("../images/BackIconEntered.png"));
@@ -45,14 +43,12 @@ public class AimTest extends JFrame {
     private JButton QuitButton = new JButton(QuitButtonBasicImage);
     private JButton Seconds30Button = new JButton(Seconds30ButtonBasicImage);
     private JButton Shots30Button = new JButton(Shots30ButtonBasicImage);
-    private JButton Oneto50Button = new JButton(Oneto50BasicImage);
     private JButton BackButton = new JButton(BackButtonBasicImage);
     // ======================================================================================================
 
+    // ====================================텍스트 ===============================
     // 윈도우 창 위치를 메뉴바를 끌어서 옮길 수 있도록 마우스 좌표 int
     private int mouseX, mouseY;
-
-    // 게임 메뉴로 넘어왔는지를 표시하기 위한 변수
 
     public AimTest() {
         setUndecorated(true); // 기본 메뉴바 안보이게하기
@@ -68,18 +64,13 @@ public class AimTest extends JFrame {
         // 시작화면에 불필요한 버튼 숨기기
         Seconds30Button.setVisible(false);
         Shots30Button.setVisible(false);
-        Oneto50Button.setVisible(false);
         BackButton.setVisible(false);
-
-        // =========================================버튼
-        // 기능=========================================
 
         ExitButton();
         StartButton();
         QuitButton();
         Seconds30Button();
         Shots30Button();
-        BrokenButton();
         BackButton();
         MenuBar();
     }
@@ -138,7 +129,7 @@ public class AimTest extends JFrame {
 
     // Shots30 버튼 타겟 30개를 빠르게 뿌수기 게임 1
     private void Shots30Button() {
-        Shots30Button.setBounds(653, 123, 700, 200);
+        Shots30Button.setBounds(495, 480, 440, 170);
         Shots30Button.setBorderPainted(false); // JButton의 외곽선을 지운다.
         Shots30Button.setContentAreaFilled(false); // JButton의 내용영역 채우기 않함
         Shots30Button.setFocusPainted(false); // JButton이 선택 되었을떄 생기는 테두리 사용안함
@@ -164,37 +155,9 @@ public class AimTest extends JFrame {
         add(Shots30Button);
     }
 
-    // Broken 버튼 게임3
-    private void BrokenButton() {
-        Oneto50Button.setBounds(653, 440, 700, 200);
-        Oneto50Button.setBorderPainted(false); // JButton의 외곽선을 지운다.
-        Oneto50Button.setContentAreaFilled(false); // JButton의 내용영역 채우기 않함
-        Oneto50Button.setFocusPainted(false); // JButton이 선택 되었을떄 생기는 테두리 사용안함
-        Oneto50Button.addMouseListener(new MouseAdapter() {
-            @Override
-            public void mouseEntered(MouseEvent e) { // 마우스가 컴포넌트 영역 안으로 들어올떄
-                Oneto50Button.setIcon(Oneto50EenteredImage);
-                Oneto50Button.setCursor(new Cursor(Cursor.HAND_CURSOR)); // 버튼에 마우스가 올라가면 핸드커서
-            }
-
-            @Override
-            public void mouseExited(MouseEvent e) { // 마우스가 컴포넌트 영역 밖으로 나갈떄
-                Oneto50Button.setIcon(Oneto50BasicImage);
-                Oneto50Button.setCursor(new Cursor(Cursor.DEFAULT_CURSOR));// 버튼에 마우스가 내려가면 기본커서
-            }
-
-            @Override
-            public void mousePressed(MouseEvent e) {
-                new Game2();
-                dispose();
-            }
-        });
-        add(Oneto50Button);
-    }
-
-    // Seconds30 버튼 게임 3
+    // Seconds30 버튼 게임 1
     private void Seconds30Button() {
-        Seconds30Button.setBounds(653, 757, 700, 200);
+        Seconds30Button.setBounds(985, 480, 440, 170);
         Seconds30Button.setBorderPainted(false); // JButton의 외곽선을 지운다.
         Seconds30Button.setContentAreaFilled(false); // JButton의 내용영역 채우기 않함
         Seconds30Button.setFocusPainted(false); // JButton이 선택 되었을떄 생기는 테두리 사용안함
@@ -224,7 +187,7 @@ public class AimTest extends JFrame {
 
     // Quit 버튼
     private void QuitButton() {
-        QuitButton.setBounds(720, 850, 440, 130);
+        QuitButton.setBounds(720, 850, 440, 170);
         QuitButton.setBorderPainted(false); // JButton의 외곽선을 지운다.
         QuitButton.setContentAreaFilled(false); // JButton의 내용영역 채우기 않함
         QuitButton.setFocusPainted(false); // JButton이 선택 되었을떄 생기는 테두리 사용안함
@@ -251,7 +214,7 @@ public class AimTest extends JFrame {
 
     // Start 버튼
     private void StartButton() {
-        StartButton.setBounds(720, 700, 440, 130);
+        StartButton.setBounds(720, 650, 440, 170);
         StartButton.setBorderPainted(false); // JButton의 외곽선을 지운다.
         StartButton.setContentAreaFilled(false); // JButton의 내용영역 채우기 않함
         StartButton.setFocusPainted(false); // JButton이 선택 되었을떄 생기는 테두리 사용안함
@@ -325,20 +288,7 @@ public class AimTest extends JFrame {
         QuitButton.setVisible(false);
         Seconds30Button.setVisible(true);
         Shots30Button.setVisible(true);
-        Oneto50Button.setVisible(true);
         BackButton.setVisible(false);
-        BackGround = new ImageIcon(Main.class.getResource("../images/GameBackGround.png")).getImage();
+        BackGround = new ImageIcon(Main.class.getResource("../images/IntroBackGround.jpg")).getImage();
     }
-
-    // (3번 실수 하면 끝 오래버티기)
-    public void GameStart3() {
-        StartButton.setVisible(false);
-        QuitButton.setVisible(false);
-        Seconds30Button.setVisible(false);
-        Shots30Button.setVisible(false);
-        Oneto50Button.setVisible(false);
-        BackButton.setVisible(true);
-        BackGround = new ImageIcon(Main.class.getResource("../images/GameStartBackGround.png")).getImage();
-    }
-
 }
