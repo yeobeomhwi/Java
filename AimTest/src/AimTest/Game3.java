@@ -4,42 +4,6 @@ import java.awt.*;
 import java.awt.event.*;
 import javax.swing.*;
 
-class TimerNum extends JLabel implements Runnable {
-    int width = 75, height = 75;
-    int x = 890, y = 150;
-
-    int second;
-
-    public TimerNum(int second) {
-        setOpaque(true);
-        setBounds(x, y, width, height);
-        setForeground(Color.BLUE);
-        setText(second + "");
-        setFont(new Font("맑은고딕", Font.PLAIN, 50));
-        setHorizontalAlignment(JLabel.CENTER);
-
-        this.second = second;
-    }
-
-    @Override
-    public void run() {
-        while (true) {
-            try {
-                Thread.sleep(1000); // 1초
-            } catch (Exception e) {
-                e.printStackTrace();
-            }
-
-            if (second > 0) {
-                second -= 1; // 1초씩 줄어듦
-                setText(second + "");
-            } else {
-                break;
-            }
-        }
-    }
-}
-
 public class Game3 extends JFrame {
     private java.awt.Image screenImage;
     private Graphics screenGraphic;
@@ -69,8 +33,45 @@ public class Game3 extends JFrame {
 
     private TimerNum timerNum;
     private Thread threadNum;
+    int second = 3; // 초
 
-    int second = 30; // 초
+    class TimerNum extends JLabel implements Runnable {
+        int width = 75, height = 75;
+        int x = 890, y = 150;
+
+        int ss;
+
+        public TimerNum(int ss) {
+            setOpaque(true);
+            setBounds(x, y, width, height);
+            setForeground(Color.BLUE);
+            setText(ss + "");
+            setFont(new Font("맑은고딕", Font.PLAIN, 50));
+            setHorizontalAlignment(JLabel.CENTER);
+
+            this.ss = second;
+        }
+
+        @Override
+        public void run() {
+            while (true) {
+                try {
+                    Thread.sleep(1000); // 1초
+                } catch (Exception e) {
+                    e.printStackTrace();
+                }
+
+                if (second > 0) {
+                    second -= 1; // 1초씩 줄어듦
+                    setText(second + "");
+                } else {
+                    Target_Plate.setVisible(false);
+                    countJLabel.setLocation(200, 20);
+                    countJLabel.setSize(300, 300);
+                }
+            }
+        }
+    }
 
     // 폰트
     Font font = new Font("맑은 고딕", Font.BOLD, 25);
@@ -269,7 +270,6 @@ public class Game3 extends JFrame {
 
             @Override
             public void mouseClicked(MouseEvent e) {
-                System.currentTimeMillis();
                 StartText.setVisible(false); // 시작전 설명을 안보이게하기
                 super.mouseClicked(e);
                 int x = (int) (Math.random() * 1540) + 190;
@@ -280,10 +280,10 @@ public class Game3 extends JFrame {
                 EndGame();
             }
 
-            // 30개를 다 클릭하면
+            // 30초가 지나면
             private void EndGame() {
                 if (second == 0) {
-                    remove(Target_Plate);
+                    System.exit(0);
                 }
             }
         });
