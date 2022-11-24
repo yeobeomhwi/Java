@@ -32,14 +32,17 @@ public class Game1 extends JFrame {
     private int mouseX, mouseY;
 
     // 폰트
-    Font font = new Font("맑은 고딕", Font.BOLD, 25);
-    Font font2 = new Font("맑은 고딕", Font.BOLD, 25);
-    Font font3 = new Font("맑은 고딕", Font.BOLD, 50);
+    Font font = new Font("문화재돌봄체", Font.BOLD, 30);
+    Font font2 = new Font("문화재돌봄체", Font.BOLD, 30);
+    Font font3 = new Font("문화재돌봄체", Font.BOLD, 50);
     long prevTime = System.currentTimeMillis();
-    int Target = 30; // 클릭횟수를 저장할 카운트
+    int Target = 3; // 클릭횟수를 저장할 카운트
+
+    long end;
 
     private JLabel endStr = new JLabel("플레이 시간 : " + ((System.currentTimeMillis() - prevTime) / 1000) + "초");
-    private JLabel countJLabel = new JLabel("현재 남은 표적 갯수 : " + Target); // 표적 갯수 카운트
+    // 표적 갯수카운트
+    private JLabel countJLabel = new JLabel("  현재 남은 표적 갯수 : " + Target);
     private JLabel StartText = new JLabel(
             "<html><body style='text-align:center;'>30개의 목표물을 빠르게 타격하라. <br> 시작하려면 타겟을 클릭하십시오.</html>"); // 시작전 텍스트
 
@@ -59,13 +62,14 @@ public class Game1 extends JFrame {
 
     public Game1() {
         MainFrame(); // 메인 프레임
-        Translucentbackground();
+
         Container(); // 컨테이너 설정
         Target_Plate(); // 타겟 이미지 설정
         ClickCount(); // 클릭 카운트 설정
         StartText(); // 시작 카운트 설정
         ExitButton();
         BackButton();
+        Translucentbackground();
         MenuBar();
         MainGame(); // 타켓 생성및 클릭
         Timer();
@@ -75,10 +79,10 @@ public class Game1 extends JFrame {
     // 하늘색 반투명 배경 설정
     private JPanel Translucentbackground() {
         JPanel blue = new JPanel();
-        blue.setBackground(new Color(80, 188, 233, 50)); // R,G,B,투명도
+        blue.setBackground(new Color(80, 188, 233, 100)); // R,G,B,투명도
         blue.setSize(1600, 900);
         blue.setLayout(null);
-        blue.setLocation(190, 142);
+        blue.setLocation(160, 150);
         blue.setVisible(true); // 시작버튼 누르면 나오게 숨겨둠
         add(blue);
         return blue;
@@ -90,7 +94,6 @@ public class Game1 extends JFrame {
         Container c = getContentPane();
         c.setLayout(null);
         c.add(Target_Plate);
-        c.add(countJLabel);
         // c.add(bt_start);
         c.add(StartText);
         c.add(endStr);
@@ -99,15 +102,15 @@ public class Game1 extends JFrame {
     // 타겟이미지 크기 위치 보이기 설정
     private void Target_Plate() {
         // 타겟 이미지
-        Target_Plate.setLocation(900, 500);
+        Target_Plate.setLocation(923, 500);
         Target_Plate.setSize(80, 80);
         Target_Plate.setVisible(true); // 시작버튼 누르면 나오게 숨겨둠
     }
 
     // 종료후 시간 텍스트 설정
     private void Timer() {
-        endStr.setLocation(750, 300);
-        endStr.setSize(500, 500);
+        endStr.setLocation(800, 515);
+        endStr.setSize(500, 50);
         endStr.setFont(font3); // 폰트 적용
         endStr.setForeground(Color.white); // 폰트 색상 적용
         endStr.setVisible(false); // 시작버튼 누르면 나오게 숨겨둠
@@ -116,17 +119,21 @@ public class Game1 extends JFrame {
     // 클릭횟수
     private void ClickCount() {
         // 클릭 횟수카운트
-        countJLabel.setLocation(200, 20);
-        countJLabel.setSize(300, 300);
+        countJLabel.setLocation(785, 70);
+        countJLabel.setSize(350, 50);
         countJLabel.setFont(font); // 폰트 적용
-        countJLabel.setForeground(Color.RED); // 폰트 색상 적용
+        countJLabel.setForeground(Color.WHITE); // 폰트 색상 적용
         countJLabel.setVisible(true); // 시작버튼 누르면 나오게 숨겨둠
+        countJLabel.setOpaque(true); // Opaque값을 true로 미리 설정해 주어야 배경색이 적용된다.
+        countJLabel.setBackground(Color.BLACK);
+
+        add(countJLabel);
     }
 
     // 시작전 텍스트
     private void StartText() {
-        StartText.setLocation(750, 150);
-        StartText.setSize(500, 500);
+        StartText.setLocation(720, 190);
+        StartText.setSize(550, 500);
         StartText.setFont(font2);
         StartText.setForeground(Color.RED);
         StartText.setVisible(true);
@@ -231,16 +238,17 @@ public class Game1 extends JFrame {
     // 메인 게임
     private void MainGame() {
         Target_Plate.addMouseListener(new MouseAdapter() {
+
             @Override
             public void mouseClicked(MouseEvent e) {
-                System.currentTimeMillis();
+                end = System.currentTimeMillis();
                 StartText.setVisible(false); // 시작전 설명을 안보이게하기
                 super.mouseClicked(e);
-                int x = (int) (Math.random() * 1540) + 190;
-                int y = (int) (Math.random() * 800) + 142;
+                int x = (int) (Math.random() * 1520) + 160;
+                int y = (int) (Math.random() * 800) + 130;
                 Target_Plate.setLocation(x, y);
                 Target--;
-                countJLabel.setText("현재 남은 표적 갯수 : " + Target);
+                countJLabel.setText("  현재 남은 표적 갯수 : " + Target);
                 EndGame();
             }
 
@@ -250,7 +258,11 @@ public class Game1 extends JFrame {
                     remove(Target_Plate);
                     countJLabel.setVisible(false);
                     endStr.setVisible(true);
-                    endStr.setText("플레이 시간 : " + ((System.currentTimeMillis() - prevTime) / 1000) + "초");
+                    endStr.setText("플레이 시간 : " + ((end - prevTime) / 1000) + "초");
+
+                    StartText.setVisible(true); // 시작전 설명을 안보이게하기
+                    StartText.setText(
+                            "<html><body style='text-align:center;'>선택창으로 가시려면 <br> 좌측상단 뒤로가기 버튼을 눌러주세요.<html>");
                 }
             }
         });
@@ -258,5 +270,6 @@ public class Game1 extends JFrame {
 
     public static void main(String[] args) {
         new Game1();
+
     }
 }
