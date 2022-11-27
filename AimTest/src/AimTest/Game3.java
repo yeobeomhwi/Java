@@ -66,8 +66,9 @@ public class Game3 extends JFrame {
                     setText(second + "");
                 } else {
                     Target_Plate.setVisible(false);
-                    countJLabel.setLocation(200, 20);
-                    countJLabel.setSize(300, 300);
+                    countJLabel.setLocation(700, 500);
+                    countJLabel.setSize(700, 60);
+                    countJLabel.setFont(font3); // 폰트 적용
                 }
             }
         }
@@ -77,6 +78,7 @@ public class Game3 extends JFrame {
     Font font = new Font("맑은 고딕", Font.BOLD, 25);
     Font font2 = new Font("맑은 고딕", Font.BOLD, 25);
     Font font3 = new Font("맑은 고딕", Font.BOLD, 50);
+
     int Target = 0; // 클릭횟수를 저장할 카운트
 
     private JLabel countJLabel = new JLabel("현재 뿌신 표적 갯수  : " + Target); // 표적 갯수 카운트
@@ -283,7 +285,6 @@ public class Game3 extends JFrame {
             // 30초가 지나면
             private void EndGame() {
                 if (second == 0) {
-                    System.exit(0);
                 }
             }
         });
