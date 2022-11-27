@@ -85,7 +85,7 @@ public class Game3 extends JFrame {
 
     int Target = 0; // 클릭횟수를 저장할 카운트
 
-    private JLabel countJLabel = new JLabel("  현재 남은 표적 갯수 : " + Target); // 표적 갯수 카운트
+    private JLabel countJLabel = new JLabel("  현재 뿌순 표적 갯수 : " + Target); // 표적 갯수 카운트
     private JLabel StartText = new JLabel(
             "<html><body style='text-align:center;'>30초안에 많은 목표물을 빠르게 타격하라. <br> 시작하려면 타겟을 클릭하십시오.</html>"); // 시작전 텍스트
 
@@ -215,7 +215,7 @@ public class Game3 extends JFrame {
     private void ClickCount() {
         // 클릭 횟수카운트
         countJLabel.setLocation(785, 70);
-        countJLabel.setSize(350, 50);
+        countJLabel.setSize(370, 50);
         countJLabel.setFont(font); // 폰트 적용
         countJLabel.setForeground(Color.WHITE); // 폰트 색상 적용
         countJLabel.setVisible(true); // 시작버튼 누르면 나오게 숨겨둠
@@ -285,7 +285,7 @@ public class Game3 extends JFrame {
                 int y = (int) (Math.random() * 800) + 130;
                 Target_Plate.setLocation(x, y);
                 Target++;
-                countJLabel.setText("  현재 남은 표적 갯수 : " + Target);
+                countJLabel.setText("  현재 뿌순 표적 갯수 : " + Target);
                 EndGame();
             }
 
