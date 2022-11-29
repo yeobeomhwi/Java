@@ -155,7 +155,7 @@ public class AimTest extends JFrame {
         add(Shots30Button);
     }
 
-    // Seconds30 버튼 게임 1
+    // Seconds30 버튼 게임 2
     private void Seconds30Button() {
         Seconds30Button.setBounds(985, 480, 440, 170);
         Seconds30Button.setBorderPainted(false); // JButton의 외곽선을 지운다.
@@ -178,7 +178,7 @@ public class AimTest extends JFrame {
             public void mousePressed(MouseEvent e) {
 
                 // 30초 게임 버튼 이벤트
-                new Game3();
+                new Game2();
                 dispose();
             }
         });
