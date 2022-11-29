@@ -35,7 +35,8 @@ public class Game1 extends JFrame {
     Font font = new Font("문화재돌봄체", Font.BOLD, 30);
     Font font2 = new Font("문화재돌봄체", Font.BOLD, 30);
     Font font3 = new Font("문화재돌봄체", Font.BOLD, 50);
-    long prevTime = System.currentTimeMillis();
+
+    long prevTime = System.currentTimeMillis(); // 시간
     int Target = 30; // 클릭횟수를 저장할 카운트
 
     long end;
