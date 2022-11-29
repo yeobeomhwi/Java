@@ -36,10 +36,10 @@ public class Game1 extends JFrame {
     Font font2 = new Font("문화재돌봄체", Font.BOLD, 30);
     Font font3 = new Font("문화재돌봄체", Font.BOLD, 50);
 
-    long prevTime = System.currentTimeMillis(); // 시간
-    int Target = 30; // 클릭횟수를 저장할 카운트
+    long prevTime; // 시간
+    int Target = 3; // 클릭횟수를 저장할 카운트
 
-    long end;
+    long end = System.currentTimeMillis();
 
     private JLabel endStr = new JLabel("플레이 시간 : " + ((System.currentTimeMillis() - prevTime) / 1000) + "초");
     // 표적 갯수카운트
@@ -242,7 +242,7 @@ public class Game1 extends JFrame {
 
             @Override
             public void mouseClicked(MouseEvent e) {
-                end = System.currentTimeMillis();
+                prevTime = System.currentTimeMillis();
                 StartText.setVisible(false); // 시작전 설명을 안보이게하기
                 super.mouseClicked(e);
                 int x = (int) (Math.random() * 1520) + 160;
@@ -259,7 +259,7 @@ public class Game1 extends JFrame {
                     remove(Target_Plate);
                     countJLabel.setVisible(false);
                     endStr.setVisible(true);
-                    endStr.setText("플레이 시간 : " + ((end - prevTime) / 1000) + "초");
+                    endStr.setText("플레이 시간 : " + ((prevTime - end) / 1000) + "초");
 
                     StartText.setVisible(true); // 시작전 설명을 안보이게하기
                     StartText.setText(
